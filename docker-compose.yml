@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  cwaverificationservertesting:
+      image: cwa-verification-server-testing
+      restart: always
+      environment: 
+        - KEY_STORE_PASSWORD=${KEY_STORE_PASSWORD}
+        - TRUST_STORE_PASSWORD=${TRUST_STORE_PASSWORD}
+      ports:
+        - "127.0.0.1:${PORT}:8082"

@@ -1,6 +1,8 @@
 spring:
   application:
     name: cwa-verification-server
+  profiles:
+    active: internal,external
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:verification
@@ -14,6 +16,7 @@ spring:
     change-log: classpath:db/changelog.yml
 server:
   max-post-size: 10000
+  port: 8082
 feign:
   client:
     config:
@@ -33,7 +36,7 @@ management:
   server:
     ssl:
       enabled: false
-    port: 8081
+    port: 8082
   endpoint:
     info:
       enabled: true
@@ -88,6 +91,6 @@ cwa-testresult-server:
     two-way: false
     hostname-verify: false
     key-store: classpath:keystore.jks
-    key-store-password: changeit
+    key-store-password: ${KEY_STORE_PASSWORD}
     trust-store: classpath:truststore.jks
-    trust-store-password: changeit
+    trust-store-password: ${TRUST_STORE_PASSWORD}
